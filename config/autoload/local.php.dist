@@ -6,10 +6,53 @@
  * security-sensitive configuration information. Copy this file without the
  * .dist extension at the end and populate values as needed.
  *
- * @NOTE: This file is ignored from Git by default with the .gitignore included
- * in ZendSkeletonApplication. This is a good practice, as it prevents sensitive
- * credentials from accidentally being committed into version control.
+ * @NOTE: This file is ignored from Git by default with the .gitignore file.
+ * This is a good practice, as it prevents sensitive credentials from
+ * accidentally being committed into version control.
  */
 
+// ******************* Change these to suit your local setup *******************
+$dbParams = array(
+    'database'  => 'titanium',
+    'username'  => 'username',
+    'password'  => 'password',
+    'hostname'  => 'localhost',
+);
+
+// ****************** DO NOT MAKE CHANGES BELOW THIS LINE **********************
+
 return array(
+    
+    // Doctrine database connection.
+    'doctrine' => array(
+        'connection' => array(
+            'orm_default' => array(
+                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'params' => array(
+                    'host'     => $dbParams['hostname'],
+                    'port'     => '3306',
+                    'user'     => $dbParams['username'],
+                    'password' => $dbParams['password'],
+                    'dbname'   => $dbParams['database'],
+                )
+            )
+        )
+    ),
+    
+    // ZendDb database connection.
+    'service_manager' => array(
+        'factories' => array(
+            'Zend\Db\Adapter\Adapter' => function ($sm) use ($dbParams) {
+                return new Zend\Db\Adapter\Adapter(array(
+                    'driver'    => 'pdo',
+                    'dsn'       => 'mysql:dbname='.$dbParams['database'].';host='.$dbParams['hostname'],
+                    'database'  => $dbParams['database'],
+                    'username'  => $dbParams['username'],
+                    'password'  => $dbParams['password'],
+                    'hostname'  => $dbParams['hostname'],
+                ));
+            },
+        ),
+    ),
+                    
 );
