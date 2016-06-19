@@ -1,6 +1,6 @@
 <?php
 
-namespace Cobalt\Service;
+namespace Titanium\Service;
 
 abstract class AbstractEntityService
 {

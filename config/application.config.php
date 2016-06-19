@@ -8,7 +8,7 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'CivUser',
-        'CivAccess',
+      //  'CivAccess',
     ),
 
     // These are various options for the listeners attached to the ModuleManager

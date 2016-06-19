@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Manufacturing Plants</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Plant Name</th>
+                    <th>Site</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($this->plants as $plant): ?>
+                <tr>
+                    <td><?php echo $this->escapeHtml($plant->getName()); ?></td>
+                    <td><?php echo $this->escapeHtml($plant->getSite()); ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
