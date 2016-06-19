@@ -37,7 +37,13 @@ CREATE TABLE part (
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
-
+-- Plant table
+create table plant (
+    id integer(11) not null auto_increment,
+    name varchar(64) not null,
+    site varchar(64),
+    primary key (id)
+) Engine=InnoDB;
 
 -- Role table.
 create table access_role (
