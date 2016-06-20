@@ -17,4 +17,16 @@ abstract class AbstractEntity
     protected $createdBy;
     protected $modified;
     protected $modifiedBy;
+    
+    function getId()
+    {
+        return $this->id;
+    }
+
+    function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
 }

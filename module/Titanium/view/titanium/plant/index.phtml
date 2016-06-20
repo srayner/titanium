@@ -4,6 +4,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>Actions</th>
                     <th>Plant Name</th>
                     <th>Site</th>
                 </tr>
@@ -11,6 +12,10 @@
             <tbody>
                 <?php foreach ($this->plants as $plant): ?>
                 <tr>
+                    <td>
+                        <a href="<?php echo $this->url('titanium/default', array('controller' => 'plant', 'action' => 'edit', 'id' => $plant->getId()));?>"><i class="fa fa-edit"></i></a>
+                        <a href="<?php echo $this->url('titanium/default', array('controller' => 'plant', 'action' => 'delete', 'id' => $plant->getId())); ?>"><i class="fa fa-remove"></i></a>
+                    </td>
                     <td><?php echo $this->escapeHtml($plant->getName()); ?></td>
                     <td><?php echo $this->escapeHtml($plant->getSite()); ?></td>
                 </tr>
