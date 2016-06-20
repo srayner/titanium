@@ -3,6 +3,7 @@
 namespace Titanium\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 
 class PlantController extends AbstractController
 {
@@ -50,9 +51,41 @@ class PlantController extends AbstractController
     
     public function editAction()
     {
-        return array(
-            
-        );
+        // Ensure we have an id, else redirect to add action.
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+             return $this->redirect()->toRoute('titanium/default', array(
+                 'controller' => 'plant',
+                 'action' => 'add'
+             ));
+        }
+        
+        // Grab the priority with the specified id.
+        $plant = $this->service->findById($id);
+        
+        $form = $this->getServiceLocator()->get('Titanium\PlantForm');
+        $form->bind($plant);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+        
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                
+                // Persist plant.
+            	$this->service->persist($plant);
+                
+                // Redirect to original referer
+                return $this->redirect()->toUrl($this->retrieveReferer());
+            }     
+        }
+        
+        $this->storeReferer('plant/edit');
+        
+        return new ViewModel(array(
+             'id' => $id,
+             'form' => $form,
+        ));
     }
     
     public function deleteAction()
@@ -67,5 +100,21 @@ class PlantController extends AbstractController
         return array(
             'plant' => $this->service->find($id)
         );
+    }
+    
+    private function storeReferer($except)
+    {
+        $referer = $this->getRequest()->getHeader('Referer')->uri()->getPath();
+        if (strpos($referer, $except) === false) {
+            $session = new Container('plant');
+            $session->referer = $referer;
+        }
+    }
+    
+    private function retrieveReferer()
+    {
+        $session = new Container('plant');
+        $referer = $session->referer;
+        return $referer;
     }
 }
