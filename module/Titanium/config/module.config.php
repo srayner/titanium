@@ -74,9 +74,10 @@ return array(
     // Service manager
     'service_manager' => array(
         'invokables' => array(
+            'Titanium\Plant' => 'Titanium\Entity\Plant',
          ),
         'factories' => array(
-            
+            'Titanium\PlantForm'                 => 'Titanium\Form\PlantFormFactory',
         ),
         'abstract_factories' => array(
             'Titanium\Service\EntityServiceFactory'

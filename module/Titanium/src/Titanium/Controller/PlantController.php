@@ -13,8 +13,9 @@ class PlantController extends AbstractController
     
     public function addAction()
     {
+        $form = $this->getServiceLocator()->get('Titanium\PlantForm');
         return array(
-            
+            'form' => $form
         );
     }
     
