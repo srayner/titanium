@@ -61,6 +61,7 @@ return array(
         ),
         'factories' => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
+            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
         ),
     ),
     'translator' => array(
@@ -94,10 +95,76 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
-    // Placeholder for console routes
-    'console' => array(
-        'router' => array(
-            'routes' => array(
+    
+    // Navigation
+    'navigation' => array(
+        'default' => array(
+            
+            // Manufacturing.
+            array(
+                'label' => '<i class="fa fa-gears"></i> Manufacturing',
+                'route' => 'titanium/default',
+                'controller' => 'plant',
+                'pages' => array(
+                    array(
+                        'label' => 'Plants',
+                        'controller' => 'plants',
+                        'action' => 'index',
+                    ),
+                    array(
+                        'label' => 'Machines',
+                        'controller' => 'machines',
+                        'action' => 'index',
+                    ),
+                    array(
+                        'label' => 'Production',
+                        'controller' => 'production',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            
+            // Design.
+            array(
+                'label' => '<i class="fa fa-pencil-square-o"></i> Design',
+                'route' => 'titanium/default',
+                'controller' => 'plant',
+                'pages' => array(
+                    array(
+                        'label' => 'Program Nests',
+                        'controller' => 'nest',
+                        'action' => 'index',
+                    ),
+                    array(
+                        'label' => 'Variants',
+                        'controller' => 'variant',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            
+            // System.
+            array(
+                'label' => '<i class="fa fa-pencil-square-o"></i> System',
+                'route' => 'titanium/default',
+                'controller' => 'user',
+                'pages' => array(
+                    array(
+                        'label' => 'Users',
+                        'controller' => 'user',
+                        'action' => 'index',
+                    ),
+                    array(
+                        'label' => 'Roles',
+                        'controller' => 'role',
+                        'action' => 'index',
+                    ),
+                    array(
+                        'label' => 'Access Rules',
+                        'controller' => 'rule',
+                        'action' => 'index',
+                    ),
+                ),
             ),
         ),
     ),

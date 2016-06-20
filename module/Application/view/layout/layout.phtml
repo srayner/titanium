@@ -22,7 +22,7 @@
         <!-- Scripts -->
         <?php echo $this->headScript()->prependFile('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
                                       ->prependFile($this->basePath('/js/jquery-1.11.3.min.js'))
-                                      ->appendFile($this->basePath('js/app.js'))
+                                     
                                       ->appendFile($this->basePath('js/jquery.ssd-vertical-navigation.js'));
         ?>
 
@@ -39,49 +39,12 @@
             
             <!-- Side navigation -->
             <div class="l-nav l-col l-scroll-y">
-                
-                <ul id="leftNavigation">
-                    <li class="active">
-                        <a href="#"><i class="fa fa-gears leftNavIcon"></i> Manufacturing</a>
-                        <ul>
-                            <li>
-                                <a href="#"><i class="fa fa-angle-right leftNavIcon"></i> Plants</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-angle-right leftNavIcon"></i> Machines</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-angle-right leftNavIcon"></i> Production</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-pencil-square-o leftNavIcon"></i> Design</a>
-                        <ul>
-                            <li>
-                                <a href="#"><i class="fa fa-angle-right leftNavIcon"></i> NC Programs</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-angle-right leftNavIcon"></i> Variants</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-wrench leftNavIcon"></i> System</a>
-                        <ul>
-                            <li>
-                                <a href="#"><i class="fa fa-angle-right leftNavIcon"></i> Users</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-angle-right leftNavIcon"></i> Roles</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-angle-right leftNavIcon"></i> Access Rules</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                </ul>
+               <?php echo $this->navigation('navigation')->menu()
+                                                          ->setMinDepth(0)
+                                                          ->setMaxDepth(0)
+                                                          ->setUlClass('side-nav')
+                                                          ->escapeLabels(false);
+                ?> 
             </div>
         
             <!-- content -->
