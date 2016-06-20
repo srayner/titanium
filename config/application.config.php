@@ -7,6 +7,7 @@ return array(
         'Titanium',
         'DoctrineModule',
         'DoctrineORMModule',
+        'TwbBundle',
         'CivUser',
       //  'CivAccess',
     ),
