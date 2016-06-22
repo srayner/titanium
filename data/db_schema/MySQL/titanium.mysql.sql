@@ -45,6 +45,26 @@ create table plant (
     primary key (id)
 ) Engine=InnoDB;
 
+-- Machine table
+create table machine (
+    id Integer(11) not null auto_increment,
+    name varchar(32) not null,
+    machine_type varchar(32) not null,
+    plant_id integer not null,
+    created            DateTime NOT NULL,
+    created_by_id      Integer(11) NOT NULL,
+    modified           DateTime,
+    modified_by_id     Integer(11),
+    primary key(id),
+    INDEX idx_machine_plant (plant_id),
+    FOREIGN KEY (plant_id)  REFERENCES plant(id) ON DELETE NO ACTION,
+    INDEX idx_user_created_by (created_by_id),
+    FOREIGN KEY (created_by_id)  REFERENCES user(id) ON DELETE NO ACTION,
+    INDEX idx_user_modified_by (modified_by_id),
+    FOREIGN KEY (modified_by_id)  REFERENCES user(id) ON DELETE NO ACTION
+
+) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 -- Role table.
 create table access_role (
     role_id   integer(11)  not null auto_increment,
