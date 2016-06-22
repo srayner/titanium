@@ -62,7 +62,6 @@ create table machine (
     FOREIGN KEY (created_by_id)  REFERENCES user(id) ON DELETE NO ACTION,
     INDEX idx_user_modified_by (modified_by_id),
     FOREIGN KEY (modified_by_id)  REFERENCES user(id) ON DELETE NO ACTION
-
 ) ENGINE=InnoDb DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 -- Role table.
