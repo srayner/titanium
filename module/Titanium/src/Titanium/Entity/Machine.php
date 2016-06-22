@@ -12,7 +12,7 @@ class Machine extends AbstractEntity
     /** @ORM\Column(type="string") */
     protected $name;
     
-    /** @ORM\Column(type="string", name="machine_name") */
+    /** @ORM\Column(type="string", name="machine_type") */
     protected $type;
     
     /**
