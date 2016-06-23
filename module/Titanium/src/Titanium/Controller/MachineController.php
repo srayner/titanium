@@ -1,6 +1,7 @@
 <?php
 
 namespace Titanium\Controller;
+use Zend\View\Model\ViewModel;
 
 class MachineController extends AbstractController
 {

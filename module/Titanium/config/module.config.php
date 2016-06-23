@@ -78,6 +78,7 @@ return array(
          ),
         'factories' => array(
             'Titanium\PlantForm'                 => 'Titanium\Form\PlantFormFactory',
+            'Titanium\MachineForm'               => 'Titanium\Form\MachineFormFactory',
         ),
         'abstract_factories' => array(
             'Titanium\Service\EntityServiceFactory'

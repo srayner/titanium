@@ -11,7 +11,7 @@ class MachineFormFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $entityManager = $serviceLocator->get('Doctrine\ORM\EntityManager');
-        $machine = new MachineForm();
+        $form = new MachineForm();
         $form->setInputFilter(new MachineFilter());
         $form->setHydrator(new DoctrineHydrator($entityManager));
         return $form;
