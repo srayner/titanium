@@ -128,7 +128,7 @@ return array(
             array(
                 'label' => '<i class="fa fa-pencil-square-o"></i> Design',
                 'route' => 'titanium/default',
-                'controller' => 'plant',
+                'controller' => 'design',
                 'pages' => array(
                     array(
                         'label' => 'Program Nests',
