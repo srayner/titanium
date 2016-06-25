@@ -90,9 +90,31 @@ class PlantController extends AbstractController
     
     public function deleteAction()
     {
-        return array(
+        $id = (int)$this->params()->fromRoute('id');
+        $plant = $this->service->findById($id);
+        
+        $request = $this->getRequest();
+        if ($request->isPost()) {
             
-        );
+            // Only perform delete if value posted was 'Yes'.
+            $del = $request->getPost('del', 'No');
+            if ($del == 'Yes') {
+                $this->service->remove($plant);
+            
+                // Redirect to plant index
+                return $this->redirect()->toRoute('titanium/default',
+                    array('controller' => 'plant'));
+            }
+            
+            // Redirect back to original referer
+            return $this->redirect()->toUrl($this->retrieveReferer());
+        }
+        
+        $this->storeReferer('plant/delete');
+        
+        return new ViewModel(array(
+            'plant' => $plant
+        ));
     }
     
     public function detailAction()
