@@ -119,8 +119,11 @@ class PlantController extends AbstractController
     
     public function detailAction()
     {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $plant = $this->service->findById($id);
+        
         return array(
-            'plant' => $this->service->find($id)
+            'plant' => $plant
         );
     }
     
